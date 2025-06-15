@@ -1,4 +1,3 @@
-
 import {
   pathJoin,
   readFileToJsonSync,
@@ -36,7 +35,7 @@ packageJson = {
   },
   repository: {
     type: 'git',
-    url: 'git+https://github.com/🥜/nry.git',
+    url: 'git+https://github.com/earhtnutDev/nry.git',
   },
   author: {
     name: '🥜',
@@ -50,13 +49,12 @@ packageJson = {
   keywords: ['nry'],
   homepage: 'https://earthnut.dev',
   bugs: {
-    url: 'https://github.com/🥜/nry/issues',
+    url: 'https://github.com/earthnutDev/nry/issues',
     email: 'earthnut.dev@outlook.com',
   },
-    bin: {
-    nry : './bin.mjs',
-     },
-      
+  bin: {
+    nry: './bin.mjs',
+  },
 };
 
 {
