@@ -27,7 +27,7 @@ export async function getValue(originData: LocalConfig) {
   });
 
   const value = await command.question({
-    text: '请输入自定义的 npm 的源地址：',
+    text: '请输入自定义的 npm 的源地址',
     tip: 'https://registry.npmjs.org',
     minLen: 5,
     maxLen: 120,

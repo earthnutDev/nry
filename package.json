@@ -1,6 +1,6 @@
 {
   "name": "nry",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "type": "module",
   "private": true,
   "description": "",
@@ -13,7 +13,7 @@
     "prepublishOnly": "pjj",
     "push": "gvv",
     "push:version": "gvv",
-    "test": "npm run b && nry_dev=all  node ./dist/index.mjs",
+    "test": "npm run b && nry_dev=false  node ./dist/bin.mjs",
     "vjj": "vjj",
     "prepare": "husky",
     "eslint": "jja cls && eslint packages",

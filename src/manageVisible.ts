@@ -5,6 +5,7 @@ import { qqi } from './qqi';
 import { exitProgram } from './utils';
 import { dog } from './dog';
 import { getCurrentRegistry } from './getCurrentRegistry';
+import { list } from './list';
 
 /**  当前可见性的更改  */
 export async function manageVisible() {
@@ -34,5 +35,9 @@ export async function manageVisible() {
   });
 
   dog('保存前的数据', originData);
-  qqi.write('config', originData);
+  const response = qqi.write('config', originData);
+
+  if (response) {
+    await list();
+  }
 }

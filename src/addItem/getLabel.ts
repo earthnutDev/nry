@@ -24,7 +24,7 @@ export async function getLabel(originData: LocalConfig) {
   });
 
   const value = await command.question({
-    text: '请输入自定义的 npm 的别名：',
+    text: '请输入自定义的 npm 的别名',
     tip: '任意别名',
     minLen: 1,
     maxLen: 120,

@@ -3,6 +3,9 @@ import { command } from './command';
 import { qqi } from './qqi';
 import { exitProgram } from './utils';
 import { getOriginData } from './data/getOriginData';
+import { list } from './list';
+import { typewrite } from 'a-node-tools';
+import { greenPen } from 'color-pen';
 
 /**  重制项  */
 export async function reset() {
@@ -20,6 +23,9 @@ export async function reset() {
 
   const writeResponse = qqi.write('config', getOriginData(true));
 
-  if (writeResponse) return await exitProgram('写入成功，退出程序');
+  if (writeResponse) {
+    await typewrite('写入' + greenPen`成功`, 60);
+    return await list();
+  }
   return await exitProgram('重置未能完成，原因未知');
 }
