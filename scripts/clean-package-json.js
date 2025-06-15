@@ -35,7 +35,7 @@ packageJson = {
   },
   repository: {
     type: 'git',
-    url: 'git+https://github.com/earhtnutDev/nry.git',
+    url: 'git+https://github.com/earthnutDev/nry.git',
   },
   author: {
     name: '🥜',
@@ -46,7 +46,7 @@ packageJson = {
   engines: {
     node: '>=18.0.0',
   },
-  keywords: ['nry'],
+  keywords: ['nry', 'earthnut'],
   homepage: 'https://earthnut.dev',
   bugs: {
     url: 'https://github.com/earthnutDev/nry/issues',
