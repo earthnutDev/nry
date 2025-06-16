@@ -3,16 +3,30 @@ import { getOriginData } from './data/getOriginData';
 import { Table } from 'colored-table';
 import { _p } from 'a-node-tools';
 import { getCurrentRegistry } from './getCurrentRegistry';
+import { isString } from 'a-type-of-js';
 
 /**  展示项  */
 export async function list() {
   /**  当前数据  */
   const data = getOriginData();
+  /**  当前的值  */
   const current = await getCurrentRegistry();
 
-  const table = new Table();
+  /**  构建表格  */
+  const table = new Table({
+    header: ['npm registry', '别名', '当前可见'],
+  });
 
-  table.setHeader(['npm registry', '别名', '当前可见']);
+  /**  是否有当前值  */
+  const hasCurrentValue = data.findIndex(e => e.value === current) > -1;
+
+  if (!hasCurrentValue && isString(current)) {
+    data.push({
+      value: current,
+      tip: current,
+      label: '曾用值',
+    });
+  }
 
   data.forEach(e =>
     table.addRow([
