@@ -1,5 +1,5 @@
 import { SelectionParamObjectData } from 'a-command';
-import { isUndefined, isFalse } from 'a-type-of-js';
+import { isUndefined, isFalse, isBusinessEmptyString } from 'a-type-of-js';
 import { magentaPen } from 'color-pen';
 import { command } from 'src/command';
 import { getOriginData } from 'src/data/getOriginData';
@@ -8,6 +8,7 @@ import { dog } from 'src/dog';
 import { getCurrentRegistry } from 'src/getCurrentRegistry';
 import { qqi } from 'src/qqi';
 import { exitProgram } from 'src/utils';
+import { dataStore } from './data';
 
 /**
  * 获得要编辑的项
@@ -17,10 +18,13 @@ import { exitProgram } from 'src/utils';
  * @param [allowCurrent=true]  是否允许当前值被选择。默认允许
  *  */
 export async function getTarget(
-  info: string = '请选择想使用的新的 npm registry',
+  info: string = '',
   filter: boolean = true,
   allowCurrent: boolean = true,
 ): Promise<SelectionParamObjectData<string>> {
+  if (isBusinessEmptyString(info))
+    info = `请选择想使用的新的 ${dataStore.pkgManager} registry 源`;
+
   /**  是否有当前值  */
   let hasCurrentValue: boolean = false;
   /**  数据  */

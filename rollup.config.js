@@ -29,6 +29,7 @@ export default {
       'src/getTarget',
       'src/getCurrentRegistry',
       'src/list',
+      'src/data',
     ],
   }),
   plugins: [

@@ -9,11 +9,12 @@ import { list } from 'src/list';
 import { _p } from 'a-node-tools';
 import { command } from 'src/command';
 import { isUndefined } from 'a-type-of-js';
+import { dataStore } from 'src/data';
 
 /**  添加新的项  */
 export async function addItem() {
   if (!qqi.available) return await exitProgram('读写受限，正在退出');
-
+  const { pkgManager } = dataStore;
   const originData = getOriginData();
   const value = await getValue(originData);
   const label = await getLabel(originData);
@@ -23,7 +24,7 @@ export async function addItem() {
       label,
     })
   ) {
-    _p(brightBlackPen`当前的 npm registry 列表为`);
+    _p(brightBlackPen`当前的 ${pkgManager} registry 源列表为`);
     await list();
     const tip = ['退出', '继续添加'];
     const result = await command.question({

@@ -2,6 +2,7 @@ import { escapeRegExp } from 'a-js-tools';
 import { isUndefined } from 'a-type-of-js';
 import { greenPen, cyanPen } from 'color-pen';
 import { command } from 'src/command';
+import { dataStore } from 'src/data';
 import { dog } from 'src/dog';
 import { LocalConfig } from 'src/types';
 import { exitProgram } from 'src/utils';
@@ -10,6 +11,7 @@ import { exitProgram } from 'src/utils';
  *
  */
 export async function getValue(originData: LocalConfig) {
+  const { pkgManager } = dataStore;
   const valueVerify: { reg: RegExp; info: string; inverse?: boolean }[] = [
     {
       reg: /\s+/g,
@@ -27,8 +29,11 @@ export async function getValue(originData: LocalConfig) {
   });
 
   const value = await command.question({
-    text: '请输入自定义的 npm 的源地址',
-    tip: 'https://registry.npmjs.org',
+    text: '请输入自定义的源地址',
+    tip:
+      pkgManager === 'yarn'
+        ? 'https://registry.yarnpkg.com'
+        : 'https://registry.npmjs.org',
     minLen: 5,
     maxLen: 120,
     verify: valueVerify,

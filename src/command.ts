@@ -11,7 +11,7 @@ const command = new Command<{
 
 command
   .bind([
-    'add <a> (用于添加一个自定义的 npm 源)',
+    'add <a> (用于添加一个自定义的 npm、yarn、pnpm 源)',
     'edit <ed> (用于编辑源) ',
     'delete <del> (用于移除某个或多个自定义的项)',
     'list <ls> (用于展示当前的所有的源)',

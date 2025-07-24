@@ -1,12 +1,14 @@
 import { SelectionParamObjectData } from 'a-command';
 import { isUndefined } from 'a-type-of-js';
 import { command } from 'src/command';
+import { dataStore } from 'src/data';
 import { dog } from 'src/dog';
 
 /**  更改值  */
 export async function editValue(target: SelectionParamObjectData<string>) {
+  const { pkgManager } = dataStore;
   const result = await command.question({
-    text: '请更改为新的 npm registry 值',
+    text: `请更改为新的 ${pkgManager} registry 值`,
     tip: target.value,
     defaultValue: target.value,
     required: false,

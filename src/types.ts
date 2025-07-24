@@ -1,3 +1,5 @@
+export type PkgManager = 'npm' | 'yarn' | 'pnpm';
+
 /**  本地数据  */
 export type LocalConfig = {
   /**  本地项值  */
@@ -28,6 +30,10 @@ export type CommandParameters = {
   reset: boolean;
 };
 
+/**  数据  */
 export type DataStore = {
+  /**  命令参数  */
   commandParameters: CommandParameters;
+  /**  使用包管理器  */
+  pkgManager: PkgManager;
 };

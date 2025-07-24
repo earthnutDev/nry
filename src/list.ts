@@ -4,9 +4,11 @@ import { Table } from 'colored-table';
 import { _p } from 'a-node-tools';
 import { getCurrentRegistry } from './getCurrentRegistry';
 import { isString } from 'a-type-of-js';
+import { dataStore } from './data';
 
 /**  展示项  */
 export async function list() {
+  const { pkgManager } = dataStore;
   /**  当前数据  */
   const data = getOriginData();
   /**  当前的值  */
@@ -14,7 +16,7 @@ export async function list() {
 
   /**  构建表格  */
   const table = new Table({
-    header: ['npm registry', '别名', '当前可见'],
+    header: [`${pkgManager} registry 源`, '别名', '当前可见'],
   });
 
   /**  是否有当前值  */

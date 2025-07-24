@@ -2,6 +2,7 @@ import { escapeRegExp } from 'a-js-tools';
 import { isUndefined } from 'a-type-of-js';
 import { greenPen, cyanPen } from 'color-pen';
 import { command } from 'src/command';
+import { dataStore } from 'src/data';
 import { dog } from 'src/dog';
 import { LocalConfig } from 'src/types';
 import { exitProgram } from 'src/utils';
@@ -15,6 +16,8 @@ export async function getLabel(originData: LocalConfig) {
     },
   ];
 
+  const { pkgManager } = dataStore;
+
   originData.forEach(e => {
     valueVerify.push({
       reg: new RegExp(`^${escapeRegExp(e.label)}$`, 'mg'),
@@ -24,7 +27,7 @@ export async function getLabel(originData: LocalConfig) {
   });
 
   const value = await command.question({
-    text: '请输入自定义的 npm 的别名',
+    text: `请输入自定义的 ${pkgManager} 的别名`,
     tip: '任意别名',
     minLen: 1,
     maxLen: 120,
