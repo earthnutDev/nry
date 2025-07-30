@@ -36,4 +36,4 @@ npm install -g nry
 
 ## 文档地址
 
-参看 [https://earthnut.dev/nry](https://earthnut.dev/npm/nry)
+参看 [nry](https://earthnut.dev/npm/nry)

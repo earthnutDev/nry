@@ -32,7 +32,7 @@ packageJson = {
     node: '>=18.0.0',
   },
   keywords: ['nry', 'earthnut'],
-  homepage: 'https://earthnut.dev',
+  homepage: 'https://earthnut.dev/npm/nry',
   bugs: {
     url: 'https://github.com/earthnutDev/nry/issues',
     email: 'earthnut.dev@outlook.com',
