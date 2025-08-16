@@ -1,8 +1,8 @@
 import { SelectionParamObjectData } from 'a-command';
 import { isUndefined } from 'a-type-of-js';
-import { command } from 'src/command';
+import { command } from 'src/aided/command';
 import { dataStore } from 'src/data';
-import { dog } from 'src/dog';
+import { dog } from 'src/aided/dog';
 
 /**  更改当前的 label 值  */
 export async function editLabel(target: SelectionParamObjectData<string>) {

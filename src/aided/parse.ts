@@ -1,8 +1,8 @@
-import { CommandParameters } from './types';
+import { CommandParameters } from '../types';
 import { isFalse, isUndefined } from 'a-type-of-js';
-import { command } from './command';
-import { commandParameters } from './data/commandParameters';
+import { commandParameters } from '../data/commandParameters';
 import { dog } from './dog';
+import { command } from './command';
 
 /**  解析参数  */
 export function parseArg() {
@@ -23,6 +23,7 @@ export function parseArg() {
       'list',
       'manage',
       'reset',
+      'clean',
     ] as (keyof CommandParameters & keyof typeof argsMap)[]
   ).forEach(e => (commandParameters[e] = isFalse(isUndefined(argsMap[e]))));
   // 当没有匹配到项

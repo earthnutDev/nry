@@ -2,14 +2,14 @@ import { getOriginData } from 'src/data/getOriginData';
 import { getValue } from './getValue';
 import { localAdd } from 'src/data/localAdd';
 import { getLabel } from './getLabel';
-import { qqi } from 'src/qqi';
-import { exitProgram } from 'src/utils';
+import { qqi } from 'src/aided/qqi';
+import { exitProgram } from 'src/aided/utils';
 import { brightBlackPen, brightRedPen } from 'color-pen';
 import { list } from 'src/list';
 import { _p } from 'a-node-tools';
-import { command } from 'src/command';
 import { isUndefined } from 'a-type-of-js';
 import { dataStore } from 'src/data';
+import { command } from 'src/aided/command';
 
 /**  添加新的项  */
 export async function addItem() {

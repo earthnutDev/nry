@@ -6,13 +6,16 @@ import cleanup from 'rollup-plugin-cleanup';
 import copy from 'rollup-plugin-copy';
 import { external } from '@qqi/rollup-external';
 import terser from '@rollup/plugin-terser';
+import process from 'node:process';
+
+const dev = process.env.dev === 'true';
 
 export default {
   input: './bin.ts',
   output: {
     format: 'es',
     entryFileNames: '[name].mjs',
-    preserveModules: false,
+    preserveModules: dev,
     sourcemap: false,
     exports: 'named',
     dir: 'dist/',
@@ -20,17 +23,18 @@ export default {
   // 配置需要排除或包含的包
   external: external({
     include: [
-      'src/dog',
-      'src/utils',
+      'src/aided/dog',
       'src/data/getOriginData',
-      'src/qqi',
+      'src/aided/qqi',
+      'src/aided/utils',
       'src/data/localAdd',
-      'src/command',
       'src/getTarget',
       'src/getCurrentRegistry',
       'src/list',
       'src/data',
+      'src/aided/command',
     ],
+    ignore: ['node:fs'],
   }),
   plugins: [
     resolve(),
@@ -38,7 +42,7 @@ export default {
     json(),
     typescript(),
     cleanup(),
-    terser(),
+    !dev && terser(),
     copy({
       targets: [
         { src: 'README.md', dest: 'dist' },

@@ -1,14 +1,14 @@
 import { getOriginData } from 'src/data/getOriginData';
-import { dog } from 'src/dog';
+import { dog } from 'src/aided/dog';
 import { getTarget } from 'src/getTarget';
 import { editValue } from './editValue';
 import { editLabel } from './editLabel';
-import { qqi } from 'src/qqi';
+import { qqi } from 'src/aided/qqi';
 import { list } from 'src/list';
 import { _p } from 'a-node-tools';
-import { command } from 'src/command';
 import { isUndefined } from 'a-type-of-js';
-import { exitProgram } from 'src/utils';
+import { exitProgram } from 'src/aided/utils';
+import { command } from 'src/aided/command';
 
 /**  编辑项  */
 export async function editItem() {
@@ -45,8 +45,9 @@ export async function editItem() {
     }
   }
 
-  const result = qqi.write('config', originData);
+  const result = qqi.write(originData);
 
+  /// 写入后循环问询是否循环修改
   if (result) {
     _p('更改后的列表为：');
     await list();

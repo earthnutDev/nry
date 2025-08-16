@@ -1,7 +1,7 @@
 export type PkgManager = 'npm' | 'yarn' | 'pnpm';
 
-/**  本地数据  */
-export type LocalConfig = {
+/**  单项数据  */
+export type LocalConfigItem = {
   /**  本地项值  */
   value: string;
   /**  本地项展示的别名  */
@@ -10,7 +10,10 @@ export type LocalConfig = {
   tip: string;
   /**  是否显示  */
   disable?: boolean;
-}[];
+};
+
+/**  本地数据  */
+export type LocalConfig = LocalConfigItem[];
 
 /**  命令参数  */
 export type CommandParameters = {
@@ -28,6 +31,8 @@ export type CommandParameters = {
   manage: boolean;
   /**  重制项  */
   reset: boolean;
+  /**  清理数据  */
+  clean: boolean;
 };
 
 /**  数据  */

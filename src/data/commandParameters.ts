@@ -9,4 +9,5 @@ export const commandParameters: CommandParameters = {
   list: false,
   noMatch: false,
   reset: false,
+  clean: false,
 };

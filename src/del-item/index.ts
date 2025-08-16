@@ -1,11 +1,11 @@
 import { _p } from 'a-node-tools';
 import { isUndefined } from 'a-type-of-js';
-import { command } from 'src/command';
+import { command } from 'src/aided/command';
 import { getOriginData } from 'src/data/getOriginData';
 import { getTarget } from 'src/getTarget';
 import { list } from 'src/list';
-import { qqi } from 'src/qqi';
-import { exitProgram } from 'src/utils';
+import { qqi } from 'src/aided/qqi';
+import { exitProgram } from 'src/aided/utils';
 
 /**
  * 移除项
@@ -22,17 +22,18 @@ export async function delItem() {
 
   for (const i in originData) {
     const index = Number(i);
-
+    /**  子项  */
     const ele = originData[index];
-
+    /// 检测并删除子项
     if (ele.value === value && ele.label === label) {
       originData.splice(index, 1);
       break;
     }
   }
 
-  const result = qqi.write('config', originData);
+  const result = qqi.write(originData);
 
+  /// 删除完成后是否循环执行删除
   if (result) {
     _p('删除项后的列表为：');
     await list();

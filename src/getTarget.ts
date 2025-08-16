@@ -1,14 +1,14 @@
 import { SelectionParamObjectData } from 'a-command';
 import { isUndefined, isFalse, isBusinessEmptyString } from 'a-type-of-js';
 import { magentaPen } from 'color-pen';
-import { command } from 'src/command';
 import { getOriginData } from 'src/data/getOriginData';
 import { localAdd } from 'src/data/localAdd';
-import { dog } from 'src/dog';
+import { dog } from 'src/aided/dog';
 import { getCurrentRegistry } from 'src/getCurrentRegistry';
-import { qqi } from 'src/qqi';
-import { exitProgram } from 'src/utils';
+import { qqi } from 'src/aided/qqi';
+import { exitProgram } from 'src/aided/utils';
 import { dataStore } from './data';
+import { command } from './aided/command';
 
 /**
  * 获得要编辑的项

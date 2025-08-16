@@ -1,5 +1,5 @@
 import { runOtherCode } from 'a-node-tools';
-import { dog } from './dog';
+import { dog } from './aided/dog';
 import { dataStore } from './data';
 
 /**  获取当前配置的 本地的 registry  */

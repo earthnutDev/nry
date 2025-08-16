@@ -1,13 +1,17 @@
 import { escapeRegExp } from 'a-js-tools';
 import { isUndefined } from 'a-type-of-js';
 import { greenPen, cyanPen } from 'color-pen';
-import { command } from 'src/command';
+import { command } from 'src/aided/command';
 import { dataStore } from 'src/data';
-import { dog } from 'src/dog';
+import { dog } from 'src/aided/dog';
 import { LocalConfig } from 'src/types';
-import { exitProgram } from 'src/utils';
-/**  获取 label  */
-export async function getLabel(originData: LocalConfig) {
+import { exitProgram } from 'src/aided/utils';
+
+/**
+ * 获取用户输入的数据
+ */
+export async function getValue(originData: LocalConfig) {
+  const { pkgManager } = dataStore;
   const valueVerify: { reg: RegExp; info: string; inverse?: boolean }[] = [
     {
       reg: /\s+/g,
@@ -16,26 +20,26 @@ export async function getLabel(originData: LocalConfig) {
     },
   ];
 
-  const { pkgManager } = dataStore;
-
   originData.forEach(e => {
     valueVerify.push({
-      reg: new RegExp(`^${escapeRegExp(e.label)}$`, 'mg'),
-      info: `${greenPen(e.label)}(${cyanPen(e.value)}) 已存在`,
+      reg: new RegExp(`^${escapeRegExp(e.value)}$`, 'mg'),
+      info: `${greenPen(e.value)}(${cyanPen(e.label)}) 已存在`,
       inverse: true,
     });
   });
 
   const value = await command.question({
-    text: `请输入自定义的 ${pkgManager} 的别名`,
-    tip: '任意别名',
-    minLen: 1,
+    text: '请输入自定义的源地址',
+    tip:
+      pkgManager === 'yarn'
+        ? 'https://registry.yarnpkg.com'
+        : 'https://registry.npmjs.org',
+    minLen: 5,
     maxLen: 120,
     verify: valueVerify,
-    defaultValue: '',
     required: false,
   });
-  dog('用户输入的别名为', value);
+  dog('用户输入的地址', value);
 
   if (isUndefined(value)) return await exitProgram();
 

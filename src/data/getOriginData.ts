@@ -1,5 +1,5 @@
 import { isArray, isBusinessEmptyString, isString } from 'a-type-of-js';
-import { qqi } from 'src/qqi';
+import { qqi } from 'src/aided/qqi';
 import { LocalConfig } from 'src/types';
 
 /**
@@ -41,7 +41,7 @@ export function getOriginData(reset: boolean = false): LocalConfig {
   // 读写受限返回原始值
   if (!qqi.available) return originData;
 
-  const localConfig = qqi.read('config') as unknown as LocalConfig;
+  const localConfig = qqi.read();
 
   if (
     isArray(localConfig) &&

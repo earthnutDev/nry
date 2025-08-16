@@ -1,11 +1,11 @@
 import { isUndefined } from 'a-type-of-js';
-import { command } from './command';
-import { qqi } from './qqi';
-import { exitProgram } from './utils';
+import { qqi } from './aided/qqi';
+import { exitProgram } from './aided/utils';
 import { getOriginData } from './data/getOriginData';
 import { list } from './list';
 import { typewrite } from 'a-node-tools';
 import { greenPen } from 'color-pen';
+import { command } from './aided/command';
 
 /**  重制项  */
 export async function reset() {
@@ -21,7 +21,7 @@ export async function reset() {
   if (isUndefined(result) || result === tip[0])
     return await exitProgram('好的，这就退出重置');
 
-  const writeResponse = qqi.write('config', getOriginData(true));
+  const writeResponse = qqi.write(getOriginData(true));
 
   if (writeResponse) {
     await typewrite('写入' + greenPen`成功`, 60);

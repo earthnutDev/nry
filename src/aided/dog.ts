@@ -6,4 +6,5 @@ export const dog = new Dog({
   type: false,
 });
 
+/**  是够为正式环境  */
 export const dun = isFalse(dog.type);

@@ -1,13 +1,14 @@
-import { addItem } from './addItem';
+import { addItem } from './add-item';
 import { choose } from './choose';
 import { commandParameters } from './data/commandParameters';
-import { delItem } from './delItem';
-import { dog } from './dog';
-import { editItem } from './editItem';
+import { delItem } from './del-item';
+import { dog } from './aided/dog';
+import { editItem } from './edit-item';
 import { list } from './list';
 import { manageVisible } from './manageVisible';
-import { parseArg } from './parse';
+import { parseArg } from './aided/parse';
 import { reset } from './reset';
+import { qqi } from './aided/qqi';
 
 /**  主程序  */
 export async function main() {
@@ -35,5 +36,8 @@ export async function main() {
   } else if (commandParameters.delete) {
     dog('删除项');
     return await delItem();
+  } else if (commandParameters.clean) {
+    dog('当前执行清理');
+    return qqi.clean();
   }
 }
