@@ -3,6 +3,7 @@ import { isUndefined } from 'a-type-of-js';
 import { command } from 'src/aided/command';
 import { dataStore } from 'src/data';
 import { dog } from 'src/aided/dog';
+import { mustEndWithSlash } from 'src/aided/utils';
 
 /**  更改值  */
 export async function editValue(target: SelectionParamObjectData<string>) {
@@ -16,5 +17,6 @@ export async function editValue(target: SelectionParamObjectData<string>) {
   dog('新值为', result);
   /**  没有更改  */
   if (isUndefined(result)) return;
-  target.value = target.tip = result;
+
+  target.value = target.tip = mustEndWithSlash(result);
 }

@@ -1,7 +1,7 @@
 import { getOriginData } from 'src/data/getOriginData';
-import { getValue } from './getValue';
+import { getValue } from './inputValue';
 import { localAdd } from 'src/data/localAdd';
-import { getLabel } from './getLabel';
+import { getLabel } from './inputLabel';
 import { qqi } from 'src/aided/qqi';
 import { exitProgram } from 'src/aided/utils';
 import { brightBlackPen, brightRedPen } from 'color-pen';

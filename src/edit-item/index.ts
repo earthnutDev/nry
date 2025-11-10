@@ -27,7 +27,7 @@ export async function editItem() {
 
   await editValue(target);
 
-  await editLabel(target);
+  await editLabel(target); // 已经写完毕
   const { value, label } = target;
 
   dog('更改后的值', value);

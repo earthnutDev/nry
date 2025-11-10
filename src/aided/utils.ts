@@ -11,3 +11,8 @@ export async function exitProgram(
   cursorShow();
   return command.end();
 }
+
+/** 必须有尾斜杠 */
+export function mustEndWithSlash(value: string) {
+  return value.endsWith('/') ? value : value + '/';
+}

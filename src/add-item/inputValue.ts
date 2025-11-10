@@ -5,7 +5,10 @@ import { command } from 'src/aided/command';
 import { dataStore } from 'src/data';
 import { dog } from 'src/aided/dog';
 import { LocalConfig } from 'src/types';
-import { exitProgram } from 'src/aided/utils';
+import { exitProgram, mustEndWithSlash } from 'src/aided/utils';
+import { originRegistryList } from 'src/data/origin-registry-list';
+
+const { npm, yarn } = originRegistryList;
 
 /**
  * 获取用户输入的数据
@@ -22,7 +25,7 @@ export async function getValue(originData: LocalConfig) {
 
   originData.forEach(e => {
     valueVerify.push({
-      reg: new RegExp(`^${escapeRegExp(e.value)}$`, 'mg'),
+      reg: new RegExp(`^${escapeRegExp(e.value)}/*$`, 'mg'),
       info: `${greenPen(e.value)}(${cyanPen(e.label)}) 已存在`,
       inverse: true,
     });
@@ -30,10 +33,7 @@ export async function getValue(originData: LocalConfig) {
 
   const value = await command.question({
     text: '请输入自定义的源地址',
-    tip:
-      pkgManager === 'yarn'
-        ? 'https://registry.yarnpkg.com'
-        : 'https://registry.npmjs.org',
+    tip: pkgManager === 'yarn' ? yarn : npm,
     minLen: 5,
     maxLen: 120,
     verify: valueVerify,
@@ -43,5 +43,5 @@ export async function getValue(originData: LocalConfig) {
 
   if (isUndefined(value)) return await exitProgram();
 
-  return value;
+  return mustEndWithSlash(value);
 }

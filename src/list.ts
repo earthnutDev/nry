@@ -6,7 +6,12 @@ import { getCurrentRegistry } from './getCurrentRegistry';
 import { isString } from 'a-type-of-js';
 import { dataStore } from './data';
 
-/**  展示项  */
+/**
+ *
+ * ## 展示项
+ *
+ * 不单在用户使用命令 `list` 触发时展示，在用户增加、修改、移除 registry 项时都将展示当前的项
+ */
 export async function list() {
   const { pkgManager } = dataStore;
   /**  当前数据  */
@@ -39,5 +44,6 @@ export async function list() {
   );
 
   table(); // 渲染
+
   _p(brightBlackPen`注：当前可见状态仅影响 npx nry 选择项`);
 }

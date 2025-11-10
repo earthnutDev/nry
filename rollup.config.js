@@ -33,6 +33,7 @@ export default {
       'src/list',
       'src/data',
       'src/aided/command',
+      'src/data/origin-registry-list',
     ],
     ignore: ['node:fs'],
   }),
