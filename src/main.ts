@@ -14,7 +14,7 @@ import { qqi } from './aided/qqi';
 export async function main() {
   parseArg();
 
-  dog('执行');
+  dog('解析参数完毕，开始执行', commandParameters);
   if (commandParameters.noMatch) {
     dog('当前没有匹配值');
     return await choose();
@@ -40,4 +40,6 @@ export async function main() {
     dog('当前执行清理');
     return qqi.clean();
   }
+
+  return await choose();
 }

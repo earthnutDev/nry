@@ -1,12 +1,13 @@
 import { escapeRegExp } from 'a-js-tools';
 import { isUndefined } from 'a-type-of-js';
-import { greenPen, cyanPen } from 'color-pen';
+import { greenPen, cyanPen, reversedPen } from 'color-pen';
 import { command } from 'src/aided/command';
 import { dataStore } from 'src/data';
 import { dog } from 'src/aided/dog';
 import { LocalConfig } from 'src/types';
-import { exitProgram, mustEndWithSlash } from 'src/aided/utils';
+import { exitProgram, isCanConnect, mustEndWithSlash } from 'src/aided/utils';
 import { originRegistryList } from 'src/data/origin-registry-list';
+import { _p } from 'a-node-tools';
 
 const { npm, yarn } = originRegistryList;
 
@@ -39,9 +40,17 @@ export async function getValue(originData: LocalConfig) {
     verify: valueVerify,
     required: false,
   });
+
   dog('用户输入的地址', value);
 
   if (isUndefined(value)) return await exitProgram();
+
+  if (!(await isCanConnect(value))) {
+    _p(`当前设置 registry 「${reversedPen(value)}」 不可用`);
+    _p(`请使用正确的源设置`);
+
+    return await getValue(originData);
+  }
 
   return mustEndWithSlash(value);
 }

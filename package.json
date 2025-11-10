@@ -1,6 +1,6 @@
 {
   "name": "nry",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "private": true,
   "description": "更替及管理 npm、yarn、pnpm registry",
@@ -17,7 +17,7 @@
     "build": "jja cls rm dist && pnpm run b && pnpm run clean:package",
     "clean:package": "node scripts/clean-package-json.js",
     "dev": "pnpm test",
-    "test": "pnpm run b:dev && jja run nry_dev=all  node ./dist/bin.mjs",
+    "test": "pnpm run b:dev && jja run nry_dev=all a_node_tools_dev=false  node ./dist/bin.mjs",
     "prettier": "jja cls && prettier . --write"
   },
   "license": "MIT",

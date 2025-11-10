@@ -35,7 +35,7 @@ export default {
       'src/aided/command',
       'src/data/origin-registry-list',
     ],
-    ignore: ['node:fs'],
+    ignore: ['node:fs', 'node:https'],
   }),
   plugins: [
     resolve(),

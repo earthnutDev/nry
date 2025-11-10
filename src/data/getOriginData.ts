@@ -46,9 +46,9 @@ const originData = [
  */
 export function getOriginData(reset: boolean = false): LocalConfig {
   // 重置默认返回原始值
-  if (reset) return { ...originData };
+  if (reset) return [...originData];
   // 读写受限返回原始值
-  if (!qqi.available) return { ...originData };
+  if (!qqi.available) return [...originData];
 
   const localConfig = qqi.read();
 
@@ -63,13 +63,15 @@ export function getOriginData(reset: boolean = false): LocalConfig {
     )
   ) {
     // 强制带杠
-    return localConfig.map(e => {
+    const result = localConfig.map(e => {
       e.value = mustEndWithSlash(e.value);
       e.tip = mustEndWithSlash(e.tip);
       return e;
     });
+
+    return result;
   }
 
   // 默认返回原始值
-  return { ...originData };
+  return [...originData];
 }
