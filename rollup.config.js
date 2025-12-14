@@ -18,7 +18,7 @@ export default {
     preserveModules: dev,
     sourcemap: false,
     exports: 'named',
-    dir: 'dist/',
+    dir: 'build/',
   },
   // 配置需要排除或包含的包
   external: external({
@@ -46,8 +46,8 @@ export default {
     !dev && terser(),
     copy({
       targets: [
-        { src: 'README.md', dest: 'dist' },
-        { src: 'LICENSE', dest: 'dist' },
+        { src: 'README.md', dest: 'build' },
+        { src: 'LICENSE', dest: 'build' },
       ],
     }),
   ],

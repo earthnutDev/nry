@@ -43,9 +43,9 @@ packageJson = {
 };
 
 {
-  const distPath = getDirectoryBy('dist', 'directory');
+  const buildPath = getDirectoryBy('build', 'directory');
 
-  const distPackagePath = pathJoin(distPath, './dist/package.json');
+  const buildPackagePath = pathJoin(buildPath, './build/package.json');
 
-  writeJsonFile(distPackagePath, packageJson);
+  writeJsonFile(buildPackagePath, packageJson);
 }

@@ -14,10 +14,10 @@
     "eslint": "jja cls && eslint packages",
     "b": "rollup --config rollup.config.js",
     "b:dev": "jja run dev=true pnpm rollup --config rollup.config.js",
-    "build": "jja cls rm dist && pnpm run b && pnpm run clean:package",
+    "build": "jja cls rm build && pnpm run b && pnpm run clean:package",
     "clean:package": "node scripts/clean-package-json.js",
     "dev": "pnpm test",
-    "test": "pnpm run b:dev && jja run nry_dev=all a_node_tools_dev=false  node ./dist/bin.mjs",
+    "test": "pnpm run b:dev && jja run nry_dev=all a_node_tools_dev=false  node ./build/bin.mjs",
     "prettier": "jja cls && prettier . --write"
   },
   "license": "MIT",
